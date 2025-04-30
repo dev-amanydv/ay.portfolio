@@ -10,7 +10,7 @@ export default function Splash({children}:{children: React.ReactNode}) {
 
   useEffect(() => {
     setIsMounted(true); // Mark that we're on the client
-    const timer = setTimeout(() => setShowSplash(false), 3000);
+    const timer = setTimeout(() => setShowSplash(false), 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -20,7 +20,7 @@ export default function Splash({children}:{children: React.ReactNode}) {
   }
 
   return (
-    <div className="relative w-full h-screen bg-black overflow-hidden">
+    <div className="relative w-full min-h-screen bg-black overflow-hidden">
       <AnimatePresence>
         {showSplash && (
           <motion.div
@@ -74,7 +74,7 @@ export default function Splash({children}:{children: React.ReactNode}) {
 
       {!showSplash && (
         <motion.div
-          className=" relative w-full h-screen bg-black overflow-hidden"
+          className="relative w-full min-h-screen bg-black overflow-hidden"
           key="main"
           initial={{ 
             filter: "blur(10px brightness(0)",
@@ -84,13 +84,12 @@ export default function Splash({children}:{children: React.ReactNode}) {
               opacity: 1
             }}
             transition={{
-              duration: 2,
-              delay:1
+              duration: 1,
             }}
         >
 
         <video src="/bg.mp4" autoPlay muted loop className="absolute h-full w-full object-cover" />
-        <div className="relative flex flex-col h-full text-6xl  backdrop-blur-[1px] z-50 text-white">
+        <div className="relative flex flex-col min-h-screen text-6xl backdrop-blur-[1px] z-50 text-white overflow-hidden">
         {children}
         </div>
         </motion.div>

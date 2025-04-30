@@ -3,6 +3,10 @@
 body{
   background-color: black;
 }
+html, body {
+  overflow-x: hidden;
+  overflow-y: auto;
+}
 
 @custom-variant dark (&:is(.dark *));
 
